@@ -10,8 +10,10 @@ CREATE TABLE "events" (
     "image_url" VARCHAR(2000)   NOT NULL,
     "startDate" date   NOT NULL,
     "localTime" date   NOT NULL,
-    "genre_id" VVARCHAR(2000)   NOT NULL,
+    "genre_id" VARCHAR(2000)   NOT NULL,
     "subgenre_id" VARCHAR(2000)   NOT NULL,
+    "min_price" NUMERIC(5,2)   NOT NULL,
+    "max_price" NUMERIC(5,2)   NOT NULL,
     CONSTRAINT "pk_events" PRIMARY KEY (
         "event_id"
      )
