@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="analytics.html">
+                        <a href="/templates/analytics.html">
                             <span class="las la-chart-bar"></span>
                             <span>Analytics</span>
                         </a>
@@ -217,47 +217,13 @@
                     </div>
             </section>
 
-            <section>
-                <div id="chart-container"></div>
-                <script src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-            </section>
+        
 
 
         </main>
 
     </div>
-    <script>
-        var dom = document.getElementById('chart-container');
-        var myChart = echarts.init(dom, null, {
-        renderer: 'canvas',
-        useDirtyRect: false
-        });
-        var app = {};
-
-        var option;
-
-        option = {
-        xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [
-            {
-            data: [120, 200, 150, 80, 70, 110, 130],
-            type: 'bar'
-            }
-        ]
-        };
-
-        if (option && typeof option === 'object') {
-        myChart.setOption(option);
-        }
-
-        window.addEventListener('resize', myChart.resize);
-    </script>
+   
     <script>
 
         // Create the tile layer with leaflet (If there is more time look into how to change the visual representation of the map)

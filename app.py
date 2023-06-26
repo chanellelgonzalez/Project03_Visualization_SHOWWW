@@ -41,6 +41,11 @@ def welcome():
      ## """List all available routes."""
      return render_template('index.html')
 
+@app.route("/analytics")
+def welcome2():
+     ## """List all available routes."""
+     return render_template('analytics.html')
+
 
 @app.route('/index')
 @cross_origin()
