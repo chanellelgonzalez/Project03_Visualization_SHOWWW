@@ -37,12 +37,12 @@ def create_connection():
 # Root endpoint
 #################################################
 @app.route("/")
-def welcome():
+def home():
      ## """List all available routes."""
      return render_template('index.html')
 
 @app.route("/analytics")
-def welcome2():
+def analytics():
      ## """List all available routes."""
      return render_template('analytics.html')
 
