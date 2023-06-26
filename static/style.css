@@ -519,6 +519,14 @@ main {
     }
 }
 
+.chart-container {
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    background: #fff;
+    z-index: 1;
+}
+
 #map-id {
     height: 100%;
     padding: 0;
