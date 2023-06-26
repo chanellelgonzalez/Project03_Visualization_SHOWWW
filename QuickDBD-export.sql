@@ -20,14 +20,22 @@ CREATE TABLE "events" (
 );
 
 CREATE TABLE "genre" (
-    "subgenre_id" VARCHAR(100)   NOT NULL,
-    "subgenre" VARCHAR(100)   NOT NULL,
     "genre_id" VARCHAR(100)   NOT NULL,
     "genre_name" VARCHAR(100)   NOT NULL,
-    CONSTRAINT "pk_subgenre" PRIMARY KEY (
+    CONSTRAINT "pk_genre" PRIMARY KEY (
+        "genre_id"
+     )
+);
+
+CREATE TABLE "subgenre" (
+    "subgenre_id" VARCHAR(100)   NOT NULL,
+    "subgenre_name" VARCHAR(100)   NOT NULL,
+    "genre_id" VARCHAR(100)   NOT NULL,
+    CONSTRAINT "pk_subgenre_id" PRIMARY KEY (
         "subgenre_id"
      )
 );
+
 
 CREATE TABLE "seatmap" (
     "venue_id" VARCHAR(100)   NOT NULL,
@@ -55,8 +63,11 @@ CREATE TABLE "venues" (
 ALTER TABLE "events" ADD CONSTRAINT "fk_events_venue_id" FOREIGN KEY("venue_id")
 REFERENCES "venues" ("venue_id");
 
+ALTER TABLE "events" ADD CONSTRAINT "fk_events_genre_id" FOREIGN KEY("genre_id")
+REFERENCES "genre" ("genre_id");
+
 ALTER TABLE "events" ADD CONSTRAINT "fk_events_subgenre_id" FOREIGN KEY("subgenre_id")
-REFERENCES "genre" ("subgenre_id");
+REFERENCES "subgenre" ("subgenre_id");
 
 ALTER TABLE "seatmap" ADD CONSTRAINT "fk_seatmap_venue_id" FOREIGN KEY("venue_id")
 REFERENCES "venues" ("venue_id");
