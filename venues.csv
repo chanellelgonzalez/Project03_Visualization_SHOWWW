@@ -1,0 +1,55 @@
+venue_id,venue_name,postalCode,city,state,address,latitude,longitude
+KovZpZAJvttA,The Belasco,90015,{'name': 'Los Angeles'},CA,{'line1': '1050 South Hill Street'},34.04024506,-118.2592392
+KovZ917AGff,Constellation Room,92704,{'name': 'Santa Ana'},CA,{'line1': '3503 South Harbor Boulevard'},33.699879,-117.917493
+KovZ917AJ5H,The Moroccan Lounge,90012,{'name': 'Los Angeles'},CA,{'line1': '901 E 1st Street'},34.04898,-118.23365
+KovZpZAkldvA,Copper Blues Oxnard Resturant,93036,{'name': 'Oxnard'},CA,{'line1': '581 Collections Blvd'},34.240229,-119.176274
+KovZpa2Hxe,Greek Theatre,90027,{'name': 'Los Angeles'},CA,{'line1': '2700 N. Vermont Ave'},34.11948811,-118.29629093
+KovZpa6OCe,Echoplex,90026,{'name': 'Los Angeles'},CA,{'line1': '1154 Glendale Blvd'},34.0775847,-118.2606316
+KovZpZAEA67A,House of Blues Anaheim,92802,{'name': 'Anaheim'},CA,"{'line1': '400 W Disney Way, #337'}",33.8095868,-117.9229975
+KovZpZAEAl6A,The Wiltern,90010,{'name': 'Los Angeles'},CA,{'line1': '3790 Wilshire Blvd.'},34.06141494,-118.30879207
+KovZ917AGEf,The Parish at House of Blues Anaheim,92802,{'name': 'Anaheim'},CA,"{'line1': '400 W Disney Way, #337'}",33.806533,-117.912474
+ZFr9jZ1ee7,Hyatt Regency Newport Beach,92660,{'name': 'Newport Beach'},CA,{'line1': '1107 Jamboree Road'},33.623501,-117.864403
+ZFr9jZ6dAF,The Novo by Microsoft,90015,{'name': 'Los Angeles'},CA,"{'line1': '800 West Olympic Blvd', 'line2': 'Suite A335'}",34.0397,-118.266403
+ZFr9jZeFAd,Troubadour,90069,{'name': 'West Hollywood'},CA,{'line1': '9081 Santa Monica Blvd.'},34.0942,-118.3815
+ZFr9jZ6kv7,Renee and Henry Segerstrom Concert Hall,92626,{'name': 'Costa Mesa'},CA,{'line1': '600 Town Center Drive'},33.6791,-117.908699
+ZFr9jZAvFe,Yaamava' Resort & Casino at San Manuel,92346,{'name': 'Highland'},CA,"{'line1': '777 San Manuel Blvd.', 'line2': 'Highland, CA'}",34.1353,-117.153198
+KovZpZAEkn6A,Kia Forum,90305,{'name': 'Inglewood'},CA,{'line1': '3900 W Manchester Blvd.'},33.9583,-118.341868
+KovZpakTme,Honda Center,92806,{'name': 'Anaheim'},CA,{'line1': '2695 E. Katella'},33.80780364,-117.87653112
+KovZ917A967,The Echo,90026,{'name': 'Los Angeles'},CA,{'line1': '1822 W Sunset Blvd'},34.077729,-118.260108
+KovZpZAEvnFA,Teragram Ballroom,90017,{'name': 'Los Angeles'},CA,{'line1': '1234 West 7th Street'},34.051841,-118.267076
+KovZ917AJue,YouTube Theater,90301,{'name': 'Inglewood'},CA,{'line1': '1011 S. Stadium Dr'},33.94982,-118.3436
+Z6r9jZkv7e,El Rey Theatre - Los Angeles,90036,{'name': 'Los Angeles'},CA,{'line1': '5515 Wilshire Blvd.'},34.070202,-118.349998
+ZFr9jZFAaF,Pappy and Harriets Pioneertown Palace,92268,{'name': 'Pioneertown'},CA,{'line1': '53688 Pioneertown Road'},34.194401,-116.548203
+Z7r9jZa7OK,Ventura Music Hall,93001,{'name': 'Ventura'},CA,{'line1': '1888 E. Thompson Blvd.'},34.348801,-119.330399
+Z7r9jZadwd,The Canyon-Montclair,91763,{'name': 'Montclair'},CA,{'line1': '5600 N Montclair Plaza Ln'},34.075298,-117.697197
+ZFr9jZeA6a,Roxy Theatre-CA,90069,{'name': 'West Hollywood'},CA,{'line1': '9009 Sunset Blvd'},34.0942,-118.3815
+KovZpZAaaaEA,Morongo Casino Resort and Spa,92230,{'name': 'Cabazon'},CA,{'line1': '49500 Seminole Dr'},33.92210864,-116.80553543
+KovZpZAEA6FA,Riverside Municipal Auditorium,92501,{'name': 'Riverside'},CA,{'line1': '3485 Mission Inn Ave'},33.9818337,-117.3712786
+KovZpZAF6JkA,The Observatory,92704,{'name': 'Santa Ana'},CA,{'line1': '3503 S. Harbor Blvd.'},33.6997648,-117.9175717
+KovZpZAJ6daA,The Regent Theater,90013,{'name': 'Los Angeles'},CA,{'line1': '448 S. Main St.'},34.0473,-118.24799
+KovZ917AihI,Harry Bridges Memorial Park,90802,{'name': 'Long Beach'},CA,{'line1': '1126 Queens Hwy'},33.752682,-118.190277
+ZFr9jZ77ea,Queen Mary Park,90802,{'name': 'Long Beach'},CA,"{'line1': '1126 Queen Mary Hwy', 'line2': 'Long Beach, CA'}",33.7687,-118.185997
+KovZpZA1vvlA,Pechanga Resort Casino,92592,{'name': 'Temecula'},CA,{'line1': '45000 Pechanga Parkway'},33.455577,-117.1059
+KovZ917AtIz,The Biergarten at Old World HB,92647,{'name': 'Huntington Beach'},CA,"{'line1': '7561 Center Ave., #49'}",33.73469267,-117.9966533
+KovZ917A2k0,The Peppermint Club,90048,{'name': 'Los Angeles'},CA,{'line1': '8713 Beverly Blvd'},34.076851,-118.381072
+KovZpZAFAIEA,City National Grove of Anaheim,92806,{'name': 'Anaheim'},CA,{'line1': '2200 East Katella Ave.'},33.80303485,-117.88624041
+KovZpZAFAt6A,Luckman Fine Arts Complex,90032,{'name': 'Los Angeles'},CA,{'line1': '5151 State University Drive'},34.0659355,-118.1655902
+Z6r9jZFdee,The Fonda Theatre,90028,{'name': 'Los Angeles'},CA,{'line1': '6126 Hollywood Blvd.'},34.0998,-118.326897
+KovZpZA77elA,Vina Robles Amphitheatre,93446,{'name': 'Paso Robles'},CA,{'line1': '3800 Mill Road'},35.64581971,-120.62933832
+Z7r9jZadbo,1720,90021,{'name': 'Los Angeles'},CA,{'line1': '1720 E 16th St'},34.028702,-118.239197
+KovZpZAJvlnA,The GRAMMY Museum,90015,{'name': 'Los Angeles'},CA,"{'line1': '800 W. Olympic Blvd., Ste. A245'}",34.04441,-118.264647
+ZFr9jZ1a16,The Theatre at Ace Hotel,90015,{'name': 'Los Angeles'},CA,{'line1': '929 Broadway'},34.0397,-118.266403
+KovZpZAkEFlA,Toyota Arena,91764,{'name': 'Ontario'},CA,{'line1': '4000 E. Ontario Center Parkway'},34.075329,-117.566364
+Z6r9jZ1eFe,Libbey Bowl,93023,{'name': 'Ojai'},CA,{'line1': '269 E Ojai Ave'},34.579498,-119.124802
+Z6r9jZF7Fe,Hollywood Bowl,90078,{'name': 'Los Angeles'},CA,{'line1': '2301 N. Highland Ave.'},34.100201,-118.327301
+KovZ917AiNY,The Torch at LA Coliseum,90037,{'name': 'Los Angeles'},CA,{'line1': '3911 S. Figueroa Street'},34.01468,-118.28297
+KovZpZAF6EaA,The Pacific Amphitheatre,92626,{'name': 'Costa Mesa'},CA,{'line1': '100 Fair Drive'},33.6638834,-117.9047684
+KovZ917A8gf,FivePoint Amphitheatre,92618,{'name': 'Irvine'},CA,{'line1': '14800 Chinon'},33.658166,-117.7286
+KovZpZAJFknA,OC Tavern,92672,{'name': 'San Clemente'},CA,{'line1': '2369 S. El Camino Real'},33.41277632,-117.60027409
+KovZpZAE7dFA,"Scherr Forum- B of A Performing Arts Center, Thousand Oaks",91362,{'name': 'Thousand Oaks'},CA,{'line1': '2100 E. Thousand Oaks Blvd'},34.175071,-118.849491
+KovZ917A3c0,BMO Stadium,90037,{'name': 'Los Angeles'},CA,{'line1': '3939 S. Figueroa St'},34.012879,-118.284926
+ZFr9jZea1v,Saban Theatre,90211,{'name': 'Beverly Hills'},CA,{'line1': '8440 Wilshire Blvd.'},34.064899,-118.382896
+KovZpZAallJA,Spotlight 29 Casino,92236,{'name': 'Coachella'},CA,{'line1': '46-200 Harrison Place'},33.7102286,-116.1828984
+ZFr9jZ67A6,Shrine Expo Hall,90007,{'name': 'Los Angeles'},CA,{'line1': '665 W. Jefferson Blvd'},34.027599,-118.285004
+KovZ917ALV3,Pershing Square,90013,{'name': 'Los Angeles'},CA,{'line1': '532 S Olive St.'},34.048469,-118.253064
+KovZpZAEA66A,Rose Bowl,91103,{'name': 'Pasadena'},CA,{'line1': '1001 Rose Bowl Drive'},34.16146505,-118.16751312
