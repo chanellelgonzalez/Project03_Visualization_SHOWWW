@@ -9,7 +9,7 @@ body,
 .legend {
   padding: 10px;
   font-family: Sanchez, serif;
-  font-size: 16px;
+  font-size: 10px;
   font-weight: bold;
   line-height: 18px;
   color: #555;
@@ -18,22 +18,71 @@ body,
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-.legend .low {
-  color: #ec8a2e;
-}
 
-.legend .empty {
+.legend .Alternative {
   color: #a0353a;
 }
 
-.legend .coming-soon {
-  color: #f4ba48;
+.legend .Ballads_or_Romantic {
+  color: #f7b32c;
 }
 
-.legend .healthy {
+.legend .Blues {
   color: #1b904f;
 }
 
-.legend .out-of-order {
+.legend .Country {
   color: #007dff;
+}
+
+.legend .Folk {
+  color: #ae00ff;
+}
+
+.legend .HipHop_or_Rap {
+  color: #8d0000;
+}
+
+.legend .Jazz {
+  color: #f64747;
+}
+
+.legend .Latin {
+  color: #e4dca7;
+}
+
+.legend .Metal {
+  color: #003874;
+}
+
+.legend .New_Age {
+  color: #096900;
+}
+
+.legend .Pop {
+  color: #2e4b4c;
+}
+
+.legend .R_and_B {
+  color: #5f0138;
+}
+
+.legend .Reggae {
+  color: #ffffff;
+}
+
+.legend .Religious {
+  color: #fe50d6;
+}
+
+.legend .Rock {
+  color: #5ca8f9;
+}
+
+.legend .World {
+  color: #45e400;
+}
+
+.legend .Other {
+  color: #444444;
 }
