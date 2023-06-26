@@ -59,13 +59,13 @@
             <div class="sidebar-menu">
                 <ul>
                     <li>
-                        <a href="/templates/index.html" class="">
+                        <a href="{{ url_for('index') }}" class="">
                             <span class="las la-adjust"></span>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/templates/analytics.html" class="active">
+                        <a href="{{ url_for('analytics') }}" class="active">
                             <span class="las la-chart-bar"></span>
                             <span>Analytics</span>
                         </a>
