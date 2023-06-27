@@ -40,6 +40,47 @@ d3.json(url_events).then(function(eventRes) {
             return {...res, ...genre}
         });
 
+        let minValues = {
+            Alternative: 0,
+            Ballads_or_Romantic: 0,
+            Blues: 0,
+            Country: 0,
+            Folk: 0,
+            HipHop_or_Rap: 0,
+            Jazz: 0,
+            Latin: 0,
+            Metal: 0,
+            New_Age: 0,
+            Pop: 0,
+            R_and_B: 0,
+            Reggae: 0,
+            Religious: 0,
+            Rock: 0,
+            World: 0,
+            Other: 0
+        };
+
+        let maxValues = {
+            Alternative: 0,
+            Ballads_or_Romantic: 0,
+            Blues: 0,
+            Country: 0,
+            Folk: 0,
+            HipHop_or_Rap: 0,
+            Jazz: 0,
+            Latin: 0,
+            Metal: 0,
+            New_Age: 0,
+            Pop: 0,
+            R_and_B: 0,
+            Reggae: 0,
+            Religious: 0,
+            Rock: 0,
+            World: 0,
+            Other: 0
+        };
+
+
         // Create an object to keep the number of markers in each layer.
         let eventCount = {
             Alternative: 0,
@@ -136,10 +177,13 @@ d3.json(url_events).then(function(eventRes) {
                 }
                 // Update the event count.
                 eventCount[GenreCode]++;
+                minValues[GenreCode] = minValues[GenreCode] + doubleJoinedRes[i].min_price
+                maxValues[GenreCode]  = maxValues[GenreCode] + doubleJoinedRes[i].max_price
         }
         //IMPORTANT!!!!
         //Call the function here so we can access the data (will have to do the same when we put this within our html file)
         makeBar(eventCount);
+        minMaxBar(eventCount);
     });
   });
 });
@@ -289,3 +333,110 @@ function makeBar(eventCount) {
 
     window.addEventListener('resize', myChart.resize);
 }
+
+
+/*
+min max bar chart
+*/
+function minMaxBar(eventCount) {
+
+    var chartDom = document.getElementById('min-max');
+    var myChart = echarts.init(chartDom);
+    var option;
+    
+    option = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          // Use axis to trigger tooltip
+          type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+        }
+      },
+      legend: {},
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'value'
+      },
+      yAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      },
+      series: [
+        {
+          name: 'Direct',
+          type: 'bar',
+          stack: 'total',
+          label: {
+            show: true
+          },
+          emphasis: {
+            focus: 'series'
+          },
+          data: [320, 302, 301, 334, 390, 330, 320]
+        },
+        {
+          name: 'Mail Ad',
+          type: 'bar',
+          stack: 'total',
+          label: {
+            show: true
+          },
+          emphasis: {
+            focus: 'series'
+          },
+          data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+          name: 'Affiliate Ad',
+          type: 'bar',
+          stack: 'total',
+          label: {
+            show: true
+          },
+          emphasis: {
+            focus: 'series'
+          },
+          data: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+          name: 'Video Ad',
+          type: 'bar',
+          stack: 'total',
+          label: {
+            show: true
+          },
+          emphasis: {
+            focus: 'series'
+          },
+          data: [150, 212, 201, 154, 190, 330, 410]
+        },
+        {
+          name: 'Search Engine',
+          type: 'bar',
+          stack: 'total',
+          label: {
+            show: true
+          },
+          emphasis: {
+            focus: 'series'
+          },
+          data: [820, 832, 901, 934, 1290, 1330, 1320]
+        }
+      ]
+    };
+    
+    option && myChart.setOption(option);
+};
+
+
+
+
+
+
+
+

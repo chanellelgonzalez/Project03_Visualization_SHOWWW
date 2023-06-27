@@ -407,7 +407,7 @@ d3.json(url_events).then(function(eventRes) {
   });
 });
 
-// Update the legend's innerHTML with the last updated time and station count.
+/*
 function updateLegend(eventCount) {
     document.querySelector(".legend").innerHTML = [
       "<p class='Alternative'>Alternative: " + eventCount.Alternative + "</p>",
@@ -429,3 +429,4 @@ function updateLegend(eventCount) {
       "<p class='Other'>Other: " + eventCount.Other + "</p>"
     ].join("");
   }
+*/
