@@ -37,9 +37,14 @@ def create_connection():
 # Root endpoint
 #################################################
 @app.route("/")
-def welcome():
+def home():
      ## """List all available routes."""
      return render_template('index.html')
+
+@app.route("/analytics")
+def analytics():
+     ## """List all available routes."""
+     return render_template('analytics.html')
 
 
 @app.route('/index')
@@ -61,7 +66,12 @@ def index():
             'event_id': row[0],
             'event_name': row[1],
             'venue_id': row[2],
+            'event_url': row[3],
+            'image_url': row[4],
+            'startDate': row[5],
             'genre_id': row[7],
+            'min_price': row[9],
+            'max_price': row[10]
             # Add more columns as needed
         })
     return jsonify(data)
@@ -136,6 +146,29 @@ def subgenre():
             # Add more columns as needed
         })
     return jsonify(data)
+
+@app.route('/seatmap')
+@cross_origin()
+def seatmap():
+    conn = create_connection()
+    cur = conn.cursor()
+
+    cur.execute('SELECT * FROM seatmap')
+    rows = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    # Convert the rows to a list of dictionaries
+    data = []
+    for row in rows:
+        data.append({
+            'SeatMap': row[1],
+            'venue_id': row[0],
+            # Add more columns as needed
+        })
+    return jsonify(data)
+
 
 @app.route('/getAll')
 @cross_origin()
