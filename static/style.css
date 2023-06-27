@@ -34,6 +34,10 @@ body {
     width: 100vw;
 }
 
+.hover-pointer {
+    cursor: pointer;
+  }
+  
 img {
     width: 100%;
     height: auto;
@@ -344,6 +348,7 @@ main {
     color: var(--main-text);
     font-weight: 600;
     margin-bottom: 1rem;
+    z-index: 0;
 }
 
 .block-grid {
@@ -519,13 +524,26 @@ main {
     }
 }
 
+* {
+    margin: 0;
+    padding: 0;
+  }
+
 .chart-container {
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    padding: 1rem;
-    background: #fff;
-    z-index: 1;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 5;
 }
+* {
+    margin: 0;
+    padding: 0;
+  }
+  .bubble-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
 
 #map-id {
     height: 100%;

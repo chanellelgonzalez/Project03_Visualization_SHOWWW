@@ -119,7 +119,7 @@
                         </div>
                         <div class="analytic-info">
                             <h4>Event Name</h4>
-                            <h1>...</h1>
+                            <h1 id="eventId"></h1>
                         </div>
                     </div>
 
@@ -129,7 +129,7 @@
                         </div>
                         <div class="analytic-info">
                             <h4>Location</h4>
-                            <h1>... <small class="text-danger">...</small></h1>
+                            <h1 id="locId"></h1>
                         </div>
                     </div>
 
@@ -139,7 +139,7 @@
                         </div>
                         <div class="analytic-info">
                             <h4>Genre</h4>
-                            <h1>... <small class="text-success">...</small></h1>
+                            <h1 id="genreId"></h1>
                         </div>
                     </div>
 
@@ -149,7 +149,7 @@
                         </div>
                         <div class="analytic-info">
                             <h4>Start Date</h4>
-                            <h1>...</h1>
+                            <h1 id="dateId"></h1>
                         </div>
                     </div>
                     <div class="analytic">
@@ -158,7 +158,7 @@
                         </div>
                         <div class="analytic-info">
                             <h4>Min/Max Price</h4>
-                            <h1>...</h1>
+                            <h1 id="priceId"></h1>
                         </div>
                     </div>
 
@@ -168,7 +168,7 @@
                         </div>
                         <div class="analytic-info">
                             <h4>Event URL</h4>
-                            <h1>... <small class="text-danger">...</small></h1>
+                            <h1 id="eventUrlId"></h1>
                         </div>
                     </div>
 
@@ -178,7 +178,7 @@
                         </div>
                         <div class="analytic-info">
                             <h4>Image</h4>
-                            <h1>... <small class="text-success">...</small></h1>
+                            <h1 id="imageId"></h1>
                         </div>
                     </div>
 
@@ -188,7 +188,7 @@
                         </div>
                         <div class="analytic-info">
                             <h4>Seat Map</h4>
-                            <h1>...</h1>
+                            <h1 id="seatId"></h1>
                         </div>
                     </div>
                 </div>
@@ -440,6 +440,7 @@
         var url_events = "/index"
         var url_venues = "/venues"
         var url_genres = "/genres"
+        var url_seatmap = "/seatmap"
 
 
         d3.json(url_events).then(function(eventRes) {
@@ -452,6 +453,9 @@
                 // Note due to there being multiple tables in our SQL database (events,venue,seatmap, and genre) depending on how we setup our API there may need to be extra calls that we then combine.
                 //Create variables to pull the information from the api (this is sample text for now. It depends on how we set up in the JSON)
                 console.log("genres success")
+                
+                     d3.json(url_seatmap).then(function(seatRes) {
+                        console.log("seatres success")
 
                 /* ----------------------------------------------------------------------
                 NEW CHANGES: The joins below were why we were only getting Alternative genres. Just copy and paste these new ones and they should work.
@@ -467,6 +471,11 @@
                     return {...res, ...genre}
                 });
                 
+                var tripleJoinedRes = doubleJoinedRes.map(hat => {
+                    const seat = seatRes.find(seat => seat.venue_id === hat.venue_id);
+                    return {...hat, ...seat}
+                });
+
                 // Create an object to keep the number of markers in each layer.
                 let eventCount = {
                     Alternative: 0,
@@ -583,16 +592,18 @@
                         2nd: The popup now works. It is fairly messy but it should show [event_name, event_url, venue_name, event_date]
                         -------------------------------------------------------*/
                         // Save info about the marker within itself so it can be pulled to the console when clicked on (Here is where you would want to decide what gets sent to the other dashboard objects).
-                        let markerData = doubleJoinedRes[i]
+                        let markerData = tripleJoinedRes[i]
                         newMarker.options.markerData = markerData;
 
                         // Bind a popup to the marker that will  display on being clicked. This will be rendered as HTML.
-                        newMarker.bindPopup("<b>" + doubleJoinedRes[i].event_name + "</b><br> Event: <a href =" + doubleJoinedRes[i].event_url + " target=_blank" + ">" + "More info </a><br>Venue: " + doubleJoinedRes[i].venue_name  + "<br> Event Date: " + doubleJoinedRes[i].event_date + " <br> ");
+                        newMarker.bindPopup("<b>" + doubleJoinedRes[i].event_name + "</b><br> Event: <a href =" + doubleJoinedRes[i].event_url + " target=_blank" + ">" + "More info </a><br>Venue: " + doubleJoinedRes[i].venue_name  + "<br> Event Date: " + doubleJoinedRes[i].startDate + " <br> ");
                         
                         /*###################################################
                         NEW CHANGES: IMPORTANT FOR SENDING INFO ABOUT THE SELECTED MARKER TO THE OTHER OBJECTS IN THE DASHBOARD
                         ###################################################*/
                         // on click we access the stored info about the marker.
+                        
+
                         newMarker.on('click', function (info) {
                             // Retrieve the data associated with the marker. (This will be in a dictionary of dictionaries)
                             var oneMarkerData = newMarker.options.markerData;
@@ -600,16 +611,92 @@
                             console.log(oneMarkerData);
                             // Do something with the data? I don't know what info and how to have other dashboard objects access it.
                             
+                            const container = document.getElementById('eventId');
+                            const container1 = document.getElementById('locId');
+                            const container2 = document.getElementById('genreId');
+                            const container3 = document.getElementById('dateId');
+                            const container4 = document.getElementById('eventUrlId');
+                            const container5 = document.getElementById('seatId');
+                            const container6 = document.getElementById('priceId');
+                            const container7 = document.getElementById('imageId');
+                            
+                            container.innerHTML = '';
+                            container1.innerHTML = '';
+                            container2.innerHTML = '';
+                            container3.innerHTML = '';
+                            container4.innerHTML = '';
+                            container5.innerHTML = '';
+                            container6.innerHTML = '';
+                            container7.innerHTML = '';
+                            let c = 'a'
+                            if (oneMarkerData.SeatMap === undefined) {
+                                c = 'p'
+                            }
+                            const eventDiv = document.createElement('p');
+                            const locDiv = document.createElement('p');
+                            const genreDiv = document.createElement('p');
+                            const dateDiv = document.createElement('p');
+                            const eventUrlDiv = document.createElement('a');
+                            const seatDiv = document.createElement(c);
+                            const priceDiv = document.createElement('p');
+                            const imageDiv = document.createElement('img');
+                            eventDiv.textContent = oneMarkerData.event_name;
+                            locDiv.textContent = oneMarkerData.City;
+                            genreDiv.textContent = oneMarkerData.genre_name;
+                            dateDiv.textContent = oneMarkerData.startDate;
+                            eventUrlDiv.textContent = oneMarkerData.event_name;
+                            seatDiv.textContent = oneMarkerData.event_name;
+                            priceDiv.textContent = oneMarkerData.min_price ?? "TBD"
+                            imageDiv.src = oneMarkerData.image_url;
+                            imageDiv.width = 30;
+                            imageDiv.height = 30;
+
+                         
+                            if (oneMarkerData.SeatMap !== undefined) {
+                                seatDiv.href = oneMarkerData.SeatMap
+                                seatDiv.target = '_blank'
+                                seatDiv.classList.add('hover-pointer')
+                                seatDiv.addEventListener('click', function(event) {
+                                event.preventDefault() // Prevent the default action of following the link
+                                window.open(seatDiv.href, '_blank')})
+                            }
+                            eventUrlDiv.href = oneMarkerData.event_url;
+                            eventUrlDiv.target = '_blank';
+                            eventUrlDiv.classList.add('hover-pointer');
+
+                            
+                            
+
+                            eventUrlDiv.addEventListener('click', function(event) {
+                            event.preventDefault(); // Prevent the default action of following the link
+                            window.open(eventUrlDiv.href, '_blank'); // Open the link in a new tab
+});
+                            
+
+                            
+                            container.appendChild(eventDiv);
+                            container1.appendChild(locDiv);
+                            container2.appendChild(genreDiv);
+                            container3.appendChild(dateDiv);
+                            container4.appendChild(eventUrlDiv);
+                            container5.appendChild(seatDiv);
+                            container6.appendChild(priceDiv);
+                            container7.appendChild(imageDiv);
+
+                            dataValues.html("");
+                            Object.entries(eventDiv)
+                            .forEach(([x,y]) =>  dataValues
+                            .append("p").text(`${x}: ${y}`))
                         });
                 }
                 
                 // NEW CHANGES: For the legend to work we update the count everytime
                 // Call the updateLegend function, which will update the legend! 
-                updateLegend(eventCount);
+                // updateLegend(eventCount);
             });
         });
         });
-
+    });
         /*---------------------------------------------------------------
         NEW CHANGES: This function will create the html for the legend to the map!!
         ---------------------------------------------------------------*/

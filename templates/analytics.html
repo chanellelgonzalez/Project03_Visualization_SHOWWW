@@ -193,7 +193,7 @@
                 
                     <div class="block-grid">
                         <div class="revenue-card">
-                            <h3 class="section-head">Upcoming Events</h3>
+                            <!-- <h3 class="section-head">Upcoming Events</h3>
                             <div class="rev-content">
                                 <div class="rev-sum">
                                     <ul>
@@ -205,20 +205,17 @@
                                     </ul>
                                     
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
-
-                        <div class="chart-card">
-                            <h3 class="section-head">Average Price by Genre</h3>
-                            <div class="graph-content" id="chart-container" width="100%" height="500px"></div>
-                            <script src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-                        </div>
-                    </div>
+                <!-- <h3>Average Price by Genre</h3> -->
+                <div id="chart-container"></div>
+                <script src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>       
             </section>
 
         </main>
 
     </div>
+    
     <script>
         var dom = document.getElementById('chart-container');
         var myChart = echarts.init(dom, null, {
