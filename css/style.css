@@ -9,9 +9,9 @@ body,
 .legend {
   padding: 10px;
   font-family: Sanchez, serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
-  line-height: 18px;
+  line-height: 10px;
   color: #555;
   background-color: white;
   border-radius: 5px;
@@ -68,7 +68,7 @@ body,
 }
 
 .legend .Reggae {
-  color: #ffffff;
+  color: #acacac;
 }
 
 .legend .Religious {
