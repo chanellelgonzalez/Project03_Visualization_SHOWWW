@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upcoming Events</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upcoming Events</h1>
+    <table>
+        <tr>
+            <th>Event Name</th>
+            <th>Venue Name</th>
+            <th>Start Date</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.event_name }}</td>
+            <td>{{ row.venue_name }}</td>
+            <td>{{ row.startDate }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
