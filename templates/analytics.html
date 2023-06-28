@@ -49,7 +49,7 @@
         <div class="sidebar-container">
             <div class="brand">
                 <h2>
-                    <img src="icon.png" alt="">
+                    <div class="las la-hippo la-.5x"></div>&nbsp;
                     SHOWWW
                 </h2>
             </div>
@@ -85,24 +85,15 @@
                 </label>
                 <div class="header-title">
                     <h1>SHOWWW <small>Stuff Happening on When/Where/What</small></h1>
-                    <p>Display information about your dashboard <span class="las la-chart-line"></span></p>
+                    <p>View the genre analysis below!<span class="las la-chart-line"></span></p>
                 </div>
             </div>
 
         </header>
 
         <main>
-            <section>
-                <div class="genre-select">
-                    <select name="" id="">
-                        <option value="">Genre</option>
-                    </select>
-                </div>
-                <div class="price-select">
-                    <select name="" id="">
-                        <option value="">Price</option>
-                    </select>
-                </div>
+            <!-- <section>
+               
                 <h3 class="section-head">Overview</h3>
                 <div class="analytics">
 
@@ -185,14 +176,14 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
             
 
 
             <section>
                 
                     <div class="block-grid">
-                        <div class="revenue-card">
+                        <!-- <div class="revenue-card"> -->
                             <!-- <h3 class="section-head">Upcoming Events</h3>
                             <div class="rev-content">
                                 <div class="rev-sum">
@@ -208,16 +199,55 @@
                             </div> -->
                         </div>
                 <!-- <h3>Average Price by Genre</h3> -->
-                <div id="chart-container"></div>
-                <script src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>       
+                <div id="chart-container" style="width: 1450px;height:200px;"></div>
+                <script src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>   
+                
+                <!-- <div id="chart-container-minmax"></div>
+                <script src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script> -->
             </section>
 
         </main>
 
     </div>
     
-    <script>
-        var dom = document.getElementById('chart-container');
+    <script type="text/javascript" src="/static/legend_bar.js">
+        
+        // var dom = document.getElementById('chart-container');
+        // var myChart = echarts.init(dom, null, {
+        // renderer: 'canvas',
+        // useDirtyRect: false
+        // });
+        // var app = {};
+
+        // var option;
+
+        // option = {
+        // xAxis: {
+        //     type: 'category',
+        //     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        // },
+        // yAxis: {
+        //     type: 'value'
+        // },
+        // series: [
+        //     {
+        //     data: [120, 200, 150, 80, 70, 110, 130],
+        //     type: 'bar'
+        //     }
+        // ]
+        // };
+
+        // if (option && typeof option === 'object') {
+        // myChart.setOption(option);
+        // }
+
+        // window.addEventListener('resize', myChart.resize);
+    </script>
+
+    <!-- <script>
+        function makeBar(genrePrice) {
+
+        var dom = document.getElementById('chart-container-minmax');
         var myChart = echarts.init(dom, null, {
         renderer: 'canvas',
         useDirtyRect: false
@@ -227,17 +257,41 @@
         var option;
 
         option = {
+        title: {
+            text: 'Minimum and Maximum Avg Ticket Price'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+            type: 'shadow'
+            }
+        },
+        legend: {},
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
         xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            type: 'value',
+            boundaryGap: [0, 0.01]
         },
         yAxis: {
-            type: 'value'
+            type: 'category',
+            data: ['Alt', 'Ballads','Blues', 'Country', 'Folk', 'HipHop', 'Jazz', 'Latin','Metal','New_Age',
+                        'Pop','R&B','Reggae','Religious','Rock','World','Other'],
         },
         series: [
             {
-            data: [120, 200, 150, 80, 70, 110, 130],
-            type: 'bar'
+            name: 'Minimum',
+            type: 'bar',
+            data: genrePrice.min_price
+            },
+            {
+            name: 'Maximum',
+            type: 'bar',
+            data: genrePrice.max_price
             }
         ]
         };
@@ -246,9 +300,9 @@
         myChart.setOption(option);
         }
 
-        window.addEventListener('resize', myChart.resize);
-    </script>
-
+        window.addEventListener('resize', myChart.resize); 
+    }
+    </script> -->
 
 </body>
 </html>

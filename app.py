@@ -169,6 +169,28 @@ def seatmap():
         })
     return jsonify(data)
 
+@app.route('/genrepriceavg')
+@cross_origin()
+def genreMinMax():
+    conn = create_connection()
+    cur = conn.cursor()
+
+    cur.execute('SELECT * FROM genre_price_average')
+    rows = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    # Convert the rows to a list of dictionaries
+    data = []
+    for row in rows:
+        data.append({
+            'genre_id': row[0],
+            'max_price': row[1],
+            'min_price': row[2],
+            # Add more columns as needed
+        })
+    return jsonify(data)
 
 @app.route('/getAll')
 @cross_origin()
