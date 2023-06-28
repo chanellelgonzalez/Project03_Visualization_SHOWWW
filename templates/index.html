@@ -56,7 +56,7 @@
         <div class="sidebar-container">
             <div class="brand">
                 <h2>
-                    <img src="icon.png" alt="">
+                    <div class="las la-hippo la-.5x"></div>&nbsp;
                     SHOWWW
                 </h2>
             </div>
@@ -92,7 +92,7 @@
                 </label>
                 <div class="header-title">
                     <h1>SHOWWW <small>Stuff Happening on When/Where/What</small></h1>
-                    <p>Display information about your dashboard <span class="las la-chart-line"></span></p>
+                    <p>View live and upcoming events happening in the Los Angeles area! Filter by genres and see event details below. <br>Click on Map to begin!<span class="las la-chart-line"></span></p>
                 </div>
             </div>
 
@@ -100,16 +100,7 @@
 
         <main>
             <section>
-                <div class="genre-select">
-                    <select name="" id="">
-                        <option value="">Genre</option>
-                    </select>
-                </div>
-                <div class="price-select">
-                    <select name="" id="">
-                        <option value="">Price</option>
-                    </select>
-                </div>
+                
                 <h3 class="section-head">Overview</h3>
                 <div class="analytics">
 
@@ -157,7 +148,7 @@
                             <span class="las la-dollar-sign"></span>
                         </div>
                         <div class="analytic-info">
-                            <h4>Min/Max Price</h4>
+                            <h4>Base Price</h4>
                             <h1 id="priceId"></h1>
                         </div>
                     </div>
@@ -200,17 +191,10 @@
                 
                     <div class="block-grid">
                         <div class="revenue-card">
-                            <h3 class="section-head">Upcoming Events</h3>
+                            <h3 class="section-head">Upcoming Events by Genre</h3>
                             <div class="rev-content">
                                 <div class="rev-sum">
-                                    <ul>
-                                    <li>thing</li>
-                                    <li>thing</li>
-                                    <li>thing</li>
-                                    <li>thing</li>
-                                    <li>thing</li>
-                                    </ul>
-                                    
+                                 <table id="upcomingId"></table>
                                 </div>
                             </div>
                         </div>
@@ -342,26 +326,63 @@
             "Other Genres": layers.Other
         };
 
+
+        // NEW CHANGES: Added select all and deselect all buttons to the map
+        // ------------------------------------------------------------*/
+        // Save L.control to the variable controlPanel
+        let controlPanel = L.control.layers(null, overlays).addTo(map);
+
+        // Add the "Select All" button to the layers control
+        var selectAll = L.DomUtil.create('button', 'select-all-button');
+        selectAll.innerHTML = 'Select All';
+        // add a event listener that checks if any layer is not selected and then selects it
+        selectAll.addEventListener('click', function() {
+        Object.values(controlPanel._layers).forEach(function(layer) {
+            if (!map.hasLayer(layer.layer)) {
+            map.addLayer(layer.layer);
+            }
+        });
+        });
+
+        // Add the "Deselect All" button to the layers control
+        var deselectAll = L.DomUtil.create('button', 'deselect-all-button');
+        deselectAll.innerHTML = 'Deselect All';
+        // add a event listener that checks if any layer is selected and then deselects it
+        deselectAll.addEventListener('click', function() {
+        Object.values(controlPanel._layers).forEach(function(layer) {
+            if (map.hasLayer(layer.layer)) {
+            map.removeLayer(layer.layer);
+            }
+        });
+        });
+
+        // Create a container for the button and append selectAll and deselectAll under it.
+        var Container = L.DomUtil.create('div', 'buttons-container');
+        Container.appendChild(selectAll);
+        Container.appendChild(deselectAll);
+
+        // Add the container to the layers control
+        controlPanel.getContainer().appendChild(Container);
         // Create a control for our layers, and add our overlays to it. (This allows us to select which layers we want to see)
         //Get rid of this when we filter from the dropdown menu
-        L.control.layers(null, overlays).addTo(map);
+        // L.control.layers(null, overlays).addTo(map);
 
 
         // Legends for the map Might not be needed (doesn't look amazing anyway)
         //-------------------------
         // Create a legend to display information about our map.
-        let info = L.control({
-            position: "bottomright"
-        });
+        // let info = L.control({
+        //     position: "bottomright"
+        // });
 
-        // When the layer control is added, insert a div with the class of "legend".
-        info.onAdd = function() {
-            let div = L.DomUtil.create("div", "legend");
-            return div;
-        };
-        // Add the info legend to the map.
-        info.addTo(map);
-        //-------------------------
+        // // When the layer control is added, insert a div with the class of "legend".
+        // info.onAdd = function() {
+        //     let div = L.DomUtil.create("div", "legend");
+        //     return div;
+        // };
+        // // Add the info legend to the map.
+        // info.addTo(map);
+        // -------------------------
 
 
 
@@ -441,6 +462,7 @@
         var url_venues = "/venues"
         var url_genres = "/genres"
         var url_seatmap = "/seatmap"
+        var url_min_max = "/genrepriceavg"
 
 
         d3.json(url_events).then(function(eventRes) {
@@ -619,6 +641,8 @@
                             const container5 = document.getElementById('seatId');
                             const container6 = document.getElementById('priceId');
                             const container7 = document.getElementById('imageId');
+                            const container8 = document.getElementById('upcomingId');
+
                             
                             container.innerHTML = '';
                             container1.innerHTML = '';
@@ -628,6 +652,7 @@
                             container5.innerHTML = '';
                             container6.innerHTML = '';
                             container7.innerHTML = '';
+                            container8.innerHTML = '';
                             let c = 'a'
                             if (oneMarkerData.SeatMap === undefined) {
                                 c = 'p'
@@ -640,6 +665,8 @@
                             const seatDiv = document.createElement(c);
                             const priceDiv = document.createElement('p');
                             const imageDiv = document.createElement('img');
+                            const upcomingDiv = document.createElement('td');
+
                             eventDiv.textContent = oneMarkerData.event_name;
                             locDiv.textContent = oneMarkerData.City;
                             genreDiv.textContent = oneMarkerData.genre_name;
@@ -650,6 +677,46 @@
                             imageDiv.src = oneMarkerData.image_url;
                             imageDiv.width = 30;
                             imageDiv.height = 30;
+                            upcomingDiv.textContent = "Upcoming events of the same genre"
+
+                            const upcomingEvents = doubleJoinedRes.filter(event => event.genre_id === oneMarkerData.genre_id);
+
+                            // Remove the current event from the list
+                            const filteredEvents = upcomingEvents.filter(event => event.event_name !== oneMarkerData.event_name);
+
+                            // Extract the event names from the remaining events
+                            //const upcomingEventNames = filteredEvents.map(event => event.event_name);
+                            const upcomingEventInfo = filteredEvents.map(event => ({ name: event.event_name, url: event.event_url }));
+
+                            // Create a string with the event names joined by a comma
+                            const limitedEventNames = upcomingEventInfo.slice(0, 10);
+                            //const upcomingEventNamesString = limitedEventNames.join(', ');
+
+                            // Append the upcoming event names to the upcomingDiv
+                            // Create a ul element
+                            const list = document.createElement('ul');
+                            limitedEventNames.forEach(eventInfo => {
+                                const listItem = document.createElement('li');
+                                const link = document.createElement('a');
+                                link.href = eventInfo.url;
+                                link.textContent = eventInfo.name;
+                                link.target = '_blank';
+                                listItem.appendChild(link);
+                               
+                                list.appendChild(listItem);
+                                list.target = '_blank';
+                            });
+
+                            // Create li elements for each event name
+                            // limitedEventNames.forEach(eventName => {
+                            // const listItem = document.createElement('li');
+                            // listItem.textContent = eventName;
+                            // list.appendChild(listItem);
+                            // });
+
+                            // Append the list to the container
+                            //container8.appendChild(list);
+                            //upcomingDiv.textContent += "\n" + upcomingEventNamesString;
 
                          
                             if (oneMarkerData.SeatMap !== undefined) {
@@ -682,11 +749,12 @@
                             container5.appendChild(seatDiv);
                             container6.appendChild(priceDiv);
                             container7.appendChild(imageDiv);
+                            container8.appendChild(list);
 
-                            dataValues.html("");
-                            Object.entries(eventDiv)
-                            .forEach(([x,y]) =>  dataValues
-                            .append("p").text(`${x}: ${y}`))
+                            // dataValues.html("");
+                            // Object.entries(eventDiv)
+                            // .forEach(([x,y]) =>  dataValues
+                            // .append("p").text(`${x}: ${y}`))
                         });
                 }
                 
